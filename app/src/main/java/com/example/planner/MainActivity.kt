@@ -8,10 +8,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +19,11 @@ class MainActivity : AppCompatActivity() {
         itemList.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
         val items = ArrayList<Item>()
-        items.add(Item("Пн","Помыть посуду"))
-        items.add(Item("ВТ","Сходить в магазин"))
+        items.add(Item("1","Помыть пол"))
+        items.add(Item("2","Сходить в магазин"))
+
+
+        Toast.makeText(this,"create",Toast.LENGTH_LONG  ).show()
 
         val adapter = CustomAdapter(items)
 
@@ -29,8 +31,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun AddItem(view: View){
-        val AddIntent = Intent(this, ActivityEdit::class.java)
-        startActivity(AddIntent)
-    }
+
 }

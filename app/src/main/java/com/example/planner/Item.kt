@@ -1,3 +1,3 @@
 package com.example.planner
 
-data class Item(val name: String, val desc: String)
+data class Item( var name: String, var desc: String)
