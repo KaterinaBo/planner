@@ -18,9 +18,15 @@ class MainActivity : AppCompatActivity() {
         val itemList = findViewById<RecyclerView>(R.id.ItemsList)
         itemList.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-        val items = ArrayList<Item>()
-        items.add(Item("1","Помыть пол"))
-        items.add(Item("2","Сходить в магазин"))
+        //var item = Item("1", "Gjvsnm gjk")
+
+        var db = DBHandler(this)
+        //db.insertData(item)
+
+        val items = db.readData() as ArrayList<Item>
+
+       // val items = ArrayList<Item>()
+       // items.add(Item("2","Сходить в магазин"))
 
 
         Toast.makeText(this,"create",Toast.LENGTH_LONG  ).show()
@@ -28,8 +34,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = CustomAdapter(items)
 
         itemList.adapter = adapter
-
     }
 
+    fun addItem (view: View){
+        val addIntent = Intent(this, AddActivity::class.java)
+        startActivity(addIntent)
+    }
 
 }

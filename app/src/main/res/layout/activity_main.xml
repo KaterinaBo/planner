@@ -26,6 +26,7 @@
             android:id="@+id/buttonAdd"
             tools:layout_editor_absoluteX="0dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="addItem"
     />
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
