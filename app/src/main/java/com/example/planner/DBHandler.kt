@@ -62,4 +62,24 @@ class DBHandler (var context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
         db.close()
         return list
     }
+
+    fun updateData(text: String, name:String, id: String) {
+
+        val db = this.writableDatabase
+
+        var cv = ContentValues()
+        cv.put(COL_DESC, text)
+        cv.put(COL_NAME, name)
+
+        db.update(TABLE_NAME, cv, COL_ID + " =?",arrayOf(id) )
+
+    }
+
+    fun deleteData(id: String) {
+
+        val db = this.writableDatabase
+
+        db.delete(TABLE_NAME,  COL_ID + " =" + id, null )
+
+    }
 }

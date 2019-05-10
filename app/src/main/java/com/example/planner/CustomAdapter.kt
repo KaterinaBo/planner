@@ -31,28 +31,26 @@ import android.widget.Toast
 
         p0?.textViewName?.text = item.name
         p0?.textViewDesc?.text = item.desc
+        p0?.index = item.id.toString()
     }
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
 
-
         val textViewDesc = itemView.findViewById(R.id.textViewDesc) as TextView
         val textViewName = itemView.findViewById(R.id.textViewName) as TextView
+        var index = ""
 
         init{
             itemView.setOnClickListener {
 
                 val textEntered: String = textViewDesc.text as String
                 val nameEntered: String = textViewName.text as String
-               // val indexV = index as String
-
 
                 val addIntent = Intent(itemView.context, ActivityEdit::class.java)
                 addIntent.putExtra("enteredText", textEntered)
                 addIntent.putExtra("enteredName", nameEntered)
-
+                addIntent.putExtra("index", index)
                 itemView.context.startActivity(addIntent)
-
             }
         }
 
