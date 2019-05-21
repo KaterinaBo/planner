@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "36822292578",
+    "firebase_url": "https://planner-cb39c.firebaseio.com",
+    "project_id": "planner-cb39c",
+    "storage_bucket": "planner-cb39c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36822292578:android:fba16ac19854f6b6",
+        "android_client_info": {
+          "package_name": "com.example.planner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36822292578-3s327so2odkbi1kibg16fdnilkl88ps0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.planner",
+            "certificate_hash": "feb422197394601374d8ad8eac75c4b1d77d2e26"
+          }
+        },
+        {
+          "client_id": "36822292578-auufvg84en60vrv568asgatfvmk9pdph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBee0I_8Qt24TA25TASe1gmO9fXgAvfpS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36822292578-auufvg84en60vrv568asgatfvmk9pdph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
