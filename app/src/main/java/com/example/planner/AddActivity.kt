@@ -19,12 +19,20 @@ class AddActivity : AppCompatActivity() {
         val textName: TextView = findViewById(R.id.addName) as TextView
         val textDesc: TextView = findViewById(R.id.addText) as TextView
 
-        val item = Item(textName.text.toString(), textDesc.text.toString())
+        if (textName.text.toString().isEmpty() || textDesc.text.toString().isEmpty()){
+            Toast.makeText(this, "Заполните поля!", Toast.LENGTH_LONG).show()
+        }
+        else{
+            val item = Item(textName.text.toString(), textDesc.text.toString())
 
-        var db = DBHandler(this)
-        db.insertData(item)
-        val addIntent = Intent(this,MainActivity::class.java)
-        startActivity(addIntent)
+            var db = DBHandler(this)
+            db.insertData(item)
+            val addIntent = Intent(this,MainActivity::class.java)
+            startActivity(addIntent)
+            finish()
+        }
+
     }
+
 
 }

@@ -51,6 +51,7 @@ import android.widget.Toast
                 addIntent.putExtra("enteredName", nameEntered)
                 addIntent.putExtra("index", index)
                 itemView.context.startActivity(addIntent)
+                System.exit(0)
             }
         }
 

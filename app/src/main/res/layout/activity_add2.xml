@@ -34,7 +34,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Впишите заголовок"
+            android:hint="Впишите заголовок"
+
             android:ems="10"
             android:id="@+id/addName"
             android:textSize="18sp" android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Впишите задачу"
+            android:hint="Впишите задачу"
+
             android:ems="10"
             android:id="@+id/addText"
             android:textSize="18sp" android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"

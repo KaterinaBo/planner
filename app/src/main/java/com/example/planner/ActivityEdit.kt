@@ -38,15 +38,17 @@ class ActivityEdit : AppCompatActivity() {
          val textName: TextView  = findViewById(R.id.editName) as TextView
          val textDesc: TextView = findViewById(R.id.editText) as TextView
 
-         //val newItem = Item(textName.text.toString(), textDesc.text.toString())
-         var db = DBHandler(this)
+         if (textName.text.toString().isEmpty() || textDesc.text.toString().isEmpty()){
+             Toast.makeText(this, "Заполните поля!", Toast.LENGTH_LONG).show()
+         }
+         else{
+             var db = DBHandler(this)
+             db.updateData(textDesc.text.toString(),textName.text.toString(),index)
 
-         //val items = db.readData() as ArrayList<Item>
-
-         db.updateData(textDesc.text.toString(),textName.text.toString(),index)
-
-         val editIntent = Intent(this, MainActivity::class.java)
-         startActivity(editIntent)
+             val editIntent = Intent(this, MainActivity::class.java)
+             startActivity(editIntent)
+            finish()
+         }
 
     }
 
@@ -55,6 +57,7 @@ class ActivityEdit : AppCompatActivity() {
         db.deleteData(index)
         val editIntent = Intent(this, MainActivity::class.java)
         startActivity(editIntent)
-
+        finish()
     }
+
 }

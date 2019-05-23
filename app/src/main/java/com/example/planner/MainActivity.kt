@@ -17,69 +17,60 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
-
-
-
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
 
+    var db = DBHandler(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val itemList = findViewById<RecyclerView>(R.id.ItemsList)
         itemList.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager?
 
-        FirebaseApp.initializeApp(this)
-        var database = FirebaseDatabase.getInstance()
-        var myRef = database.getReference("message")
-
-        myRef.setValue("Hello, World!")
-
-
-/*
-        // Read from the database
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = dataSnapshot.getValue(String::class.java)
-                Log.d("name", "Value is: " + value!!)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                //Log.w(FragmentActivity.TAG, "Failed to read value.", error.toException())
-            }
-        })*/
-        //var item = Item("1", "Gjvsnm gjk")
-
-        var db = DBHandler(this)
-        //db.insertData(item)
-
         val items = db.readData() as ArrayList<Item>
 
-       // val items = ArrayList<Item>()
-       // items.add(Item("2","Сходить в магазин"))
-
-
-        Toast.makeText(this,"create",Toast.LENGTH_LONG  ).show()
-
         val adapter = CustomAdapter(items)
-
         itemList.adapter = adapter
-
-
-
     }
+
+    override fun onPause() {
+        super.onPause()
+        if (isFinishing){
+            val items = db.readData() as ArrayList<Item>
+            updateFireBase(items)
+        }
+        //Toast.makeText(this, "pause", Toast.LENGTH_SHORT).show()
+    }
+
 
     fun addItem (view: View){
 
         val addIntent = Intent(this, AddActivity::class.java)
         startActivity(addIntent)
+        finish()
     }
+
+    fun finish (view: View){
+        finish()
+    }
+
+    fun updateFireBase(items: ArrayList<Item>){
+
+        FirebaseApp.initializeApp(applicationContext)
+        var database = FirebaseDatabase.getInstance()
+        var myRef = database.getReference("message")
+        myRef.removeValue()
+        for(item in items){
+            myRef.push().setValue(item)
+        }
+        //Toast.makeText(this, "update", Toast.LENGTH_LONG).show()
+
+    }
+
 
 }
