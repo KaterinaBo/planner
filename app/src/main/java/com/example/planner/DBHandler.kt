@@ -38,7 +38,7 @@ class DBHandler (var context: Context):SQLiteOpenHelper(context, DATABASE_NAME, 
         if (result == -1.toLong())
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT ).show()
         else
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT ).show()
+            Toast.makeText(context, "Добавлено", Toast.LENGTH_SHORT ).show()
     }
 
     fun readData(): MutableList<Item>{
