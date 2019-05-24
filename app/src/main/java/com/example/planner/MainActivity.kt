@@ -26,9 +26,13 @@ class MainActivity : AppCompatActivity() {
     var db = DBHandler(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         val itemList = findViewById<RecyclerView>(R.id.ItemsList)
         itemList.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager?
 
@@ -49,10 +53,8 @@ class MainActivity : AppCompatActivity() {
 
 
     fun addItem (view: View){
-
         val addIntent = Intent(this, AddActivity::class.java)
         startActivity(addIntent)
-        finish()
     }
 
     fun finish (view: View){

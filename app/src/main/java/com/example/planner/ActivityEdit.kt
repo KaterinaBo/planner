@@ -44,10 +44,7 @@ class ActivityEdit : AppCompatActivity() {
          else{
              var db = DBHandler(this)
              db.updateData(textDesc.text.toString(),textName.text.toString(),index)
-
-             val editIntent = Intent(this, MainActivity::class.java)
-             startActivity(editIntent)
-            finish()
+             finish()
          }
 
     }
@@ -55,8 +52,6 @@ class ActivityEdit : AppCompatActivity() {
     fun delItem(view: View){
         var db = DBHandler(this)
         db.deleteData(index)
-        val editIntent = Intent(this, MainActivity::class.java)
-        startActivity(editIntent)
         finish()
     }
 

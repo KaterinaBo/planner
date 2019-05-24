@@ -1,11 +1,17 @@
 package com.example.planner
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import java.io.IOException
 
 class AddActivity : AppCompatActivity() {
 
@@ -27,12 +33,12 @@ class AddActivity : AppCompatActivity() {
 
             var db = DBHandler(this)
             db.insertData(item)
-            val addIntent = Intent(this,MainActivity::class.java)
-            startActivity(addIntent)
             finish()
         }
 
     }
+
+
 
 
 }
